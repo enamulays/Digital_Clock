@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equive="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0.911);
+            
+        }
+        .clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translatex(-50%) translatey(-50%);
+            color: rgb(108, 241, 0);
+            text-shadow: 4px 4px 10px rgba(255, 0, 0, 0.89);
+            font-size: 100px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .my {
+            color: rgb(76, 0, 255);
+            text-shadow: 4px 4px 10px rgba(255, 0, 0, 0.89);
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width:980px){
+            .clock,
+            .names{
+                font-size: 50px;
+            }
+        }
+        @media screen and (max-width:480px){
+            .clock {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+   <div id="MyClockDisplay" class="clock" onload="showTime()">fdfddddddddddd</div>
+   <div class="names">
+   </div>
+
+    <script>
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+
+            if(h>12){
+                h = h - 12;
+                session = "PM";
+            }
+
+            if(h < 10){
+                h = "0" + h;
+            }
+
+            if(m < 10){
+                m = "0" + m;
+            }
+            if(s < 10){
+                s = "0" + s;
+            }
+
+            var fullDate = h + ":" + m + ":" + s + " " + session;
+
+            document.getElementById("MyClockDisplay").innerHTML = fullDate;
+            document.getElementById("MyClockDisplay").textContent = fullDate;
+            setTimeout(showTime, 1000);
+        }
+        showTime();
+    </script>
+</body>
+</html>
